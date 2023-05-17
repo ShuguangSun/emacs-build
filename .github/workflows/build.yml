@@ -5,7 +5,7 @@ name: build
 # Controls when the action will run.
 on:
   schedule:
-    - cron: "0 0 1 * *" # monthly
+    - cron: "0 0 * * 4" # monthly
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
@@ -22,8 +22,8 @@ jobs:
           - os: windows-2022
             shell: powershell
             arch: x86_64
-          - os: ubuntu-22.04
-            shell: bash
+          # - os: ubuntu-22.04
+          #   shell: bash
 
     # The type of runner that the job will run on
     runs-on: ${{ matrix.os }}
@@ -68,8 +68,8 @@ jobs:
         if: runner.os == 'Windows'
         # Require --nativecomp and --with-* flags, else the deps will not be included properly
         run: |
-          .\emacs-build.cmd --nativecomp --slim --with-rsvg --build
-          .\emacs-build.cmd --nativecomp --slim --with-rsvg --pack-all
+          .\emacs-build.cmd --nativecomp --slim --with-rsvg --with-native-image-api --pdf-tools --build
+          .\emacs-build.cmd --nativecomp --slim --with-rsvg --with-native-image-api --pdf-tools --pack-all
 
       - name: Build and pack Emacs
         if: runner.os != 'Windows'
