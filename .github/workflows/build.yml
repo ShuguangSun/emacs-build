@@ -109,4 +109,3 @@ jobs:
           prerelease: false
           files: |
             *-full.zip
-            *.deb
