@@ -136,7 +136,7 @@ function emacs_dependencies ()
 function emacs_configure_build_dir ()
 {
     cd "$emacs_build_dir"
-    options="--disable-build-details --without-dbus"
+    options="--disable-build-details --without-dbus --with-native-image-api --without-pop --program-transform-name=s/^ctags$/ctags.emacs/"
     if test "$emacs_compress_files" = "no"; then
         options="$options --without-compress-install"
     else
@@ -479,8 +479,8 @@ while test -n "$*"; do
         --build) add_actions action1_ensure_packages action2_build;;
         --deps) add_actions action1_ensure_packages action3_package_deps;;
         --pack-emacs) add_actions action2_install action4_package_emacs;;
-        # --pack-all) add_actions action1_ensure_packages action3_package_deps action2_install action5_package_all;;
-        --pack-all) add_actions action1_ensure_packages action2_install action4_package_emacs;;
+        --pack-all) add_actions action1_ensure_packages action3_package_deps action2_install action5_package_all;;
+        # --pack-all) add_actions action1_ensure_packages action2_install;;
 
         --pdf-tools) add_actions action2_install action3_pdf_tools;;
         --mu) add_actions action2_install action3_mu;;
