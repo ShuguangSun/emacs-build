@@ -108,4 +108,4 @@ jobs:
           name: emacs_${{ needs.build.outputs.version }}
           prerelease: false
           files: |
-            *-full.zip
+            *-nodeps.zip
