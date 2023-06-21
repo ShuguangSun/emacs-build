@@ -478,7 +478,8 @@ while test -n "$*"; do
         --ensure) add_actions action1_ensure_packages;;
         --build) add_actions action1_ensure_packages action2_build;;
         --deps) add_actions action1_ensure_packages action3_package_deps;;
-        --pack-emacs) add_actions action2_install action4_package_emacs;;
+        # --pack-emacs) add_actions action2_install action4_package_emacs;;
+        --pack-emacs) add_actions action1_ensure_packages action3_package_deps action2_install action4_package_emacs;;
         --pack-all) add_actions action1_ensure_packages action3_package_deps action2_install action5_package_all;;
         # --pack-all) add_actions action1_ensure_packages action2_install;;
 
